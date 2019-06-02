@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+                android:id="@id/books"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="0dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_editor_absoluteX="0dp"
+                motion:layout_editor_absoluteY="0dp" />
+        <Constraint
+                android:id="@id/arrowImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:rotation="0"
+                motion:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                motion:layout_constraintEnd_toStartOf="@+id/imageButton"
+                motion:layout_constraintTop_toTopOf="@+id/imageButton" />
+        <Constraint
+                android:id="@id/imageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+                android:id="@id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:alpha="0"
+                motion:layout_constraintStart_toStartOf="@+id/mainTextView"
+                motion:layout_constraintTop_toBottomOf="@+id/books" />
+        <Constraint
+                android:id="@id/mainTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:alpha="0"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        <Constraint android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    motion:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                    motion:layout_constraintEnd_toEndOf="parent"
+                    motion:layout_constraintBottom_toBottomOf="parent"
+        />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/startLibrary">
+        <Constraint
+                android:id="@+id/fragmentFrame"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                motion:layout_constraintTop_toBottomOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"/>
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+                android:id="@id/books"
+                android:layout_width="0dp"
+                android:layout_height="426dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="-1dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+                android:id="@id/arrowImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="0dp"
+                android:rotation="90"
+                motion:layout_constraintBottom_toBottomOf="@+id/books"
+                motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+                android:id="@id/imageButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                motion:layout_constraintBottom_toBottomOf="@+id/books"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@+id/books" />
+        <Constraint
+                android:id="@id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:alpha="1"
+                motion:layout_constraintStart_toStartOf="@+id/mainTextView"
+                motion:layout_constraintTop_toBottomOf="@+id/books" />
+        <Constraint
+                android:id="@id/mainTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:alpha="1"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        <Constraint
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                motion:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintBottom_toBottomOf="parent"/>
+    </ConstraintSet>
+    <!--<ConstraintSet android:id="@+id/endLibrary">
+        <Constraint
+                android:id="@+id/fragmentFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"/>
+    </ConstraintSet>-->
+
+    <Transition
+            motion:constraintSetStart="@+id/start"
+            motion:constraintSetEnd="@+id/end"
+            motion:duration="1000"
+            motion:motionInterpolator="linear">
+
+        <OnSwipe
+                motion:touchAnchorId="@+id/books"
+                motion:touchAnchorSide="bottom"
+                motion:dragDirection="dragUp" />
+        <KeyFrameSet>
+            <KeyAttribute
+                    android:rotation="0"
+                    motion:framePosition="1"
+                    motion:motionTarget="@id/arrowImageView" />
+            <KeyPosition
+                    motion:framePosition="27"
+                    motion:percentX="-0.2585034"
+                    motion:percentY="0.50630915"
+                    motion:motionTarget="@id/arrowImageView"
+                    motion:keyPositionType="deltaRelative" />
+        </KeyFrameSet>
+    </Transition>
+
+
+    <!--<Transition motion:constraintSetStart="@id/startLibrary"
+                motion:constraintSetEnd="@id/endLibrary"
+                motion:duration="1000"
+                motion:motionInterpolator="linear">
+        <OnSwipe
+                motion:touchAnchorId="@+id/fragmentFrame"
+                motion:touchAnchorSide="top"
+                motion:dragDirection="dragDown" />
+    </Transition>-->
+</MotionScene>
