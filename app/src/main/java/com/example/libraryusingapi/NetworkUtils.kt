@@ -7,6 +7,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.lang.Exception
+import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -23,26 +24,25 @@ class NetworkUtils {
             var bookJsonString = ""
 
             try {
-                Log.d("pacz", "jeden")
-                var builtUri = Uri.parse(BOOK_BASE_URL).buildUpon()
+                val builtUri = Uri.parse(BOOK_BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
                     .appendQueryParameter(MAX_RESULTS, "10")
                     .appendQueryParameter(PRINT_TYPE, "books")
                     .build()
 
-                var requestURL = URL(builtUri.toString())
+                val requestURL = URL(builtUri.toString())
 
                 urlConnection = requestURL.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "GET"
                 urlConnection.connect()
 
-                var inputStream = urlConnection.inputStream
-                var buffer = StringBuffer()
+                val inputStream = urlConnection.inputStream
+                val buffer = StringBuilder()
                 if (inputStream == null) {
                     return null
                 }
                 bufferedReader = BufferedReader(InputStreamReader(inputStream))
-                var line = bufferedReader.readLine()
+                val line = bufferedReader.readLine()
 
                 while ((line) != null) {
                     buffer.append(line + "\n")
@@ -50,15 +50,12 @@ class NetworkUtils {
                 if (buffer.length == 0) {
                     return null
                 }
-                Log.d("pacz", "dwa")
                 bookJsonString = bufferedReader.toString()
 
             } catch (e: Exception) {
                 e.printStackTrace()
                 return null
             } finally {
-                Log.d("pacz", "finally")
-                Log.d("pacz2",  bookJsonString)
                 if (urlConnection != null) {
                     urlConnection.disconnect()
                 }
@@ -70,7 +67,7 @@ class NetworkUtils {
                     }
                 }
 
-                Log.d("pacz2",  bookJsonString)
+                Log.d("pacz",  bookJsonString)
                 return bookJsonString
             }
 

@@ -17,6 +17,7 @@ import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.libraryusingapi.get.Fetch
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), FragmentBooks.OnBookSelected{
@@ -78,8 +79,11 @@ class MainActivity : AppCompatActivity(), FragmentBooks.OnBookSelected{
     }
 
     fun searchBooks(view: View){
-        val mQuery = editText.text.toString()
-        FetchBook().execute(mQuery)
+        Fetch().execute(editText.text.toString())
+
+        //old szukanie
+        /*val mQuery = editText.text.toString()
+        FetchBook().execute(mQuery)*/
         display()
     }
 }

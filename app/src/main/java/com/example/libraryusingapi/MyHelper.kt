@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintHelper
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class myHelper : ConstraintHelper {
+class MyHelper : ConstraintHelper {
     private var mContainer: ConstraintLayout? = null
 
     constructor(context: Context) : super(context)
