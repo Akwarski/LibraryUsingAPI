@@ -2,33 +2,22 @@ package com.example.libraryusingapi
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import com.example.libraryusingapi.get.Fetch
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.libraryusingapi.model.Book
 
-class MainActivity : AppCompatActivity(), FragmentBooks.OnBookSelected{
-    override fun onBookSelected(bookModel: BookModel) {
-        val bookDetailsFragment = BookDetailsFragment.newInstance(bookModel)
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentFrame, bookDetailsFragment, "bookDetails")
-            .addToBackStack("details")
-            .commit()
-    }
-
+class MainActivity : AppCompatActivity(){
+    /*override fun OnBookSelected(book: Book) {
+        Log.d("ggg", "finish")
+    }*/
 
     private lateinit var container: View
     var debugMode : Int = 0
@@ -46,7 +35,6 @@ class MainActivity : AppCompatActivity(), FragmentBooks.OnBookSelected{
 
 
         container = findViewById(R.id.motionLayout)
-        //listView = findViewById(R.id.list)
         editText = findViewById(R.id.editText)
         imageView = findViewById(R.id.searchImageView)
 
@@ -54,7 +42,7 @@ class MainActivity : AppCompatActivity(), FragmentBooks.OnBookSelected{
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         //animation path
-        debugMode = MotionLayout.DEBUG_SHOW_PATH
+        //debugMode = MotionLayout.DEBUG_SHOW_PATH
     }
 
     fun changeState(view: View) {
@@ -70,20 +58,15 @@ class MainActivity : AppCompatActivity(), FragmentBooks.OnBookSelected{
     fun display(){
         //fragment definition
         val fragment = FragmentBooks.newInstance()
+        fragment.query = editText.text.toString()
+
         supportFragmentManager.beginTransaction()
             .add(R.id.fragmentFrame, fragment)
             .addToBackStack("main")
             .commit()
-
-        Toast.makeText(applicationContext, editText.text, Toast.LENGTH_LONG).show()
     }
 
     fun searchBooks(view: View){
-        Fetch().execute(editText.text.toString())
-
-        //old szukanie
-        /*val mQuery = editText.text.toString()
-        FetchBook().execute(mQuery)*/
         display()
     }
 }

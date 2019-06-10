@@ -7,7 +7,8 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity"
         app:layoutDescription="@xml/scene_01"
-        android:id="@+id/motionLayout">
+        android:id="@+id/motionLayout"
+>
 
     <ImageView android:layout_width="match_parent"
                android:layout_height="match_parent"

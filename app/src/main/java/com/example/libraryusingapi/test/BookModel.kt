@@ -1,4 +1,4 @@
-package com.example.libraryusingapi
+package com.example.libraryusingapi.test
 
 import java.io.Serializable
 import java.net.URL

@@ -26,8 +26,6 @@ class MyHelper : ConstraintHelper {
                 animator.interpolator = BounceInterpolator()
                 animator.start()
             }
-        }else{
-            Toast.makeText(context, "yolo", Toast.LENGTH_LONG).show()
         }
         mContainer = container
     }

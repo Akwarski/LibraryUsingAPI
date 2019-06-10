@@ -1,4 +1,4 @@
-package com.example.libraryusingapi
+package com.example.libraryusingapi.test
 
 import android.net.Uri
 import android.widget.ImageView

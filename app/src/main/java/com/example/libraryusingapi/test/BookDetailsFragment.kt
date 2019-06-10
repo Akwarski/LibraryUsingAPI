@@ -1,16 +1,18 @@
-package com.example.libraryusingapi
+package com.example.libraryusingapi.test
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.libraryusingapi.R
 import com.example.libraryusingapi.databinding.FragmentBookDetailsBinding
+import com.example.libraryusingapi.model.Book
 
 class BookDetailsFragment: Fragment() {
 
     companion object {
-        fun newInstance(bookModel: BookModel): BookDetailsFragment {
+        fun newInstance(bookModel: Book): BookDetailsFragment {
             val arguments = Bundle()
             arguments.putSerializable("model", bookModel)
 
